@@ -2,10 +2,6 @@ package ExcelUtil;
 
 import java.util.List;
 
-import Exceptions.ExcelExceptions;
-
-
-
 public class ExcelWriter {	
 	
 	/**
@@ -14,11 +10,9 @@ public class ExcelWriter {
 	 * This method will write the List in the parameters into an excel.
 	 *
 	 * @param  obj	A List&lt;T extends IExcelWriter&gt; that will be written in the excel.
-	 * @throws ExcelExceptions 
 	 */
-	public static <T extends IExcelWriter> void write(List<T> obj) throws ExcelExceptions{
+	public static <T extends IExcelWriter> void write(List<T> obj){
 		//First, get the headers from the obj.
-		if(obj != null) {
 			String [] headers = obj.get(0).getHeaders();
 			
 			for (int i = 0; i < headers.length; i++) {
@@ -34,11 +28,5 @@ public class ExcelWriter {
 				}
 				System.out.print("\n");
 			}
-		}else {
-			throw new ExcelExceptions();
-		}
 	}
-
-
-
 }
