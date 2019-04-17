@@ -1,9 +1,11 @@
-package com.mavenTestNG.TestNGArtifact;
+package JavaVO;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public  class AccountReport extends Writer implements IExcelWriter{
+import ExcelUtil.IExcelWriter;
+
+public  class AccountVO implements IExcelWriter{
 
 	String name = "Pablo";
 	String apellido = "Garcia"; 
@@ -25,10 +27,10 @@ public  class AccountReport extends Writer implements IExcelWriter{
 		return values;
 	}
 
-	public AccountReport() {
+	public AccountVO() {
 		
 	}
-	public AccountReport(String name, String apellido, String status, String edad) {
+	public AccountVO(String name, String apellido, String status, String edad) {
 		super();
 		this.name = name;
 		this.apellido = apellido;
