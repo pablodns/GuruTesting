@@ -7,11 +7,11 @@ import ExcelUtil.IExcelWriter;
 
 public class ReportVO implements IExcelWriter{
 		
-	String stream = "Deposits";
-	String passed = "2"; 
-	String failed = "4";
-	String skipped = "0";
-	String total = "6";
+	String stream = "";
+	int passed = 0; 
+	int failed = 0;
+	int skipped = 0;
+	int total = 0;
 	
 	public String[] getHeaders() {
 		String []headers = {"Stream","Passed","Failed","Skipped", "Total"};
@@ -32,7 +32,7 @@ public class ReportVO implements IExcelWriter{
 	public ReportVO() {
 		
 	}
-	public ReportVO(String stream, String passed, String failed, String skipped, String total) {
+	public ReportVO(String stream, int passed, int failed, int skipped, int total) {
 		super();
 		this.stream = stream;
 		this.passed = passed;
@@ -41,6 +41,43 @@ public class ReportVO implements IExcelWriter{
 		this.total = total;
 	}
 
+	
+	public static List<ReportVO> addTotal(List<ReportVO> reportList){
+		String stream = "TOTAL";
+		int passed = 0;
+		int failed = 0;
+		int skipped = 0;
+		int total = 0;
+		
+		for(ReportVO report: reportList) {
+			passed += report.getPassed();
+			failed += report.getFailed();
+			skipped += report.getSkipped();
+			total += report.getTotal();
+		}
+		ReportVO report = new ReportVO();
+		report.setStream(stream);
+		report.setPassed(passed);
+		report.setFailed(failed);
+		report.setSkipped(skipped);
+		report.setTotal(total);
+		
+		reportList.add(report);
+		
+		return reportList;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public String getStream() {
 		return stream;
 	}
@@ -49,35 +86,35 @@ public class ReportVO implements IExcelWriter{
 		this.stream = stream;
 	}
 
-	public String getPassed() {
+	public int getPassed() {
 		return passed;
 	}
 
-	public void setPassed(String passed) {
+	public void setPassed(int passed) {
 		this.passed = passed;
 	}
 
-	public String getFailed() {
+	public int getFailed() {
 		return failed;
 	}
 
-	public void setFailed(String failed) {
+	public void setFailed(int failed) {
 		this.failed = failed;
 	}
 
-	public String getSkipped() {
+	public int getSkipped() {
 		return skipped;
 	}
 
-	public void setSkipped(String skipped) {
+	public void setSkipped(int skipped) {
 		this.skipped = skipped;
 	}
 
-	public String getTotal() {
+	public int getTotal() {
 		return total;
 	}
 
-	public void setTotal(String total) {
+	public void setTotal(int total) {
 		this.total = total;
 	}
 	
