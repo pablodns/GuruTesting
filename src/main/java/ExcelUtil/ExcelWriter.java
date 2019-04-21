@@ -2,8 +2,8 @@ package ExcelUtil;
 
 import java.util.List;
 
-public class ExcelWriter {	
-	
+
+public class ExcelWriter {		
 	/**
 	 * Write any List&lt;T extends IExcelWriter&gt; Object into an excel. 
 	 * <p>
